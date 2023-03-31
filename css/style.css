@@ -3,3 +3,112 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+    --topBg: #009688;
+    --bottomBg: #dbdbd2;
+    --bgHeader: #eaeaea;
+    --bgTextBar: #eaeaea;
+    --iconsColor: #b1b1b1;
+    --bgNotificationBar: #8edafc;
+    --bgSentMsg: #d5f9ba;
+    --bgReceivedMsg: #ffffff;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg-top {
+    height: 150px;
+    background-color: var(--topBg);
+}
+.bg-bottom {
+    height: calc(100vh - 150px);
+    background-color: var(--bottomBg);
+}
+
+#app {
+    height: 90vh;
+    width: 80vw;
+    min-width: 800px;
+    display: flex;
+    background-color: #f7fbfa;
+    border: 1px solid black;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.small-fs {
+    font-size: .8rem;
+}
+
+.lastMessage {
+    color: #bbc1cf;
+}
+
+
+/* ASIDE BAR  */
+
+.aside-bar {
+    height: 90vh;
+}
+
+.info-account {
+    height: 50px;
+    background-color: var(--bgTextBar);
+    padding: .3rem 1rem;
+}
+
+.img-container {
+    height: 100%;
+    
+}
+
+img {
+    height: 40px;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+
+.icon-container a {
+    color: var(--iconsColor);
+}
+
+.notification {
+    height: 60px;
+    background-color: var(--bgNotificationBar);
+    padding: .3rem 1rem;
+    
+}
+
+.notification img {
+    height: 40px;
+    border-radius: 50%;
+    margin-right: .5rem;
+    filter: invert(100%) sepia(5%) saturate(18%) hue-rotate(128deg) brightness(105%) contrast(105%);
+}
+
+.input-group i {
+    color: var(--iconsColor);
+}
+
+.chats-box {
+    padding: .3rem 1rem;
+    overflow-y: scroll;
+    height: 68.5vh;
+}
+
+.chat-box {
+    height: 60px;
+    cursor: pointer;
+}
+
+.chat-box:hover {
+    background-color: var(--iconsColor) ;
+}
+
