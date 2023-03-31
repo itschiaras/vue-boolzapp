@@ -13,6 +13,8 @@
     --bgNotificationBar: #8edafc;
     --bgSentMsg: #d5f9ba;
     --bgReceivedMsg: #ffffff;
+    --darkIcon: #6f6d6d;
+
 }
 
 body {
@@ -21,11 +23,11 @@ body {
 }
 
 .bg-top {
-    height: 150px;
+    height: 120px;
     background-color: var(--topBg);
 }
 .bg-bottom {
-    height: calc(100vh - 150px);
+    height: calc(100vh - 120px);
     background-color: var(--bottomBg);
 }
 
@@ -35,7 +37,6 @@ body {
     min-width: 800px;
     display: flex;
     background-color: #f7fbfa;
-    border: 1px solid black;
     margin: 0 auto;
     position: absolute;
     top: 50%;
@@ -47,9 +48,14 @@ body {
     font-size: .8rem;
 }
 
-.lastMessage {
+.lastMessageColor {
     color: #bbc1cf;
 }
+
+.lastSentColor {
+   color: var(--iconsColor); 
+}
+
 
 
 /* ASIDE BAR  */
@@ -97,6 +103,9 @@ img {
     color: var(--iconsColor);
 }
 
+main {
+    height: 90vh;
+}
 .chats-box {
     
     overflow-y: scroll;
@@ -113,3 +122,27 @@ img {
     background-color: var(--iconsColor) ;
 }
 
+.currentChat {
+    background-image: url(../img/mine.jpg);
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+
+.sentMessage {
+    background-color: var(--bgSentMsg);
+    border-radius: 10px;
+    max-width: 500px;
+
+}
+
+.receivedMessage {
+    background-color: var(--bgReceivedMsg);
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+.darkIconColor a{
+    color: var(--darkIcon);
+}

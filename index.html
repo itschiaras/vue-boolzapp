@@ -29,7 +29,7 @@
                     <!-- INFO ACCOUNT  -->
                     <div class="info-account d-flex justify-content-between">
                         <div class="img-container d-flex align-items-center">
-                            <img src="./img/avatar_1.jpg" alt="">
+                            <img src="./img/avatar_6.jpg" alt="">
                             <p class="m-0">Chiaretta</p>
                         </div>
 
@@ -65,20 +65,80 @@
                     <!-- CHATS BOX  -->
                     <div class="chats-box">
                         <ul class="list-unstyled">
-                            <li class="chat-box d-flex align-items-center mb-2">
-                                <img src="./img/avatar_2.jpg" alt="">
+                            <li class="chat-box d-flex align-items-center mb-2" v-for="contact in contacts">
+                                <img :src="contact.avatar" alt="">
                                 <div class="d-flex flex-column">
-                                    <p class="m-0">Simone</p>
-                                    <p class="m-0 small-fs lastMessage">Ultimo messaggio inviato</p>
+                                    <p class="m-0">{{contact.name}}</p>
+                                    <p class="m-0 small-fs lastMessageColor">Ultimo messaggio inviato</p>
                                 </div>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
 
                 <!-- MAIN  -->
-                <main class="col">bb</main>
+                <main class="col p-0">
+
+                    <!-- INFO SELECTED ACCOUNT  -->
+                    <div class="info-account d-flex justify-content-between">
+                        <div class="img-container d-flex align-items-center">
+                            <img src="./img/avatar_1.jpg" alt="">
+                            <div class="d-flex flex-column">
+                                <p class="m-0">Michele</p>
+                                <p class="m-0 small-fs lastSentColor">Ultimo messaggio inviato</p>
+                            </div>
+                        </div>
+
+                        <div class="icon-container d-flex align-items-center gap-3">
+                            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                            <a href=""><i class="fa-solid fa-paperclip"></i></a>
+                            <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- CHAT  -->
+
+                    <div class="currentChat">
+                        <div class="messagebox d-flex justify-content-end mb-3">
+                            <div class="sentMessage d-flex align-items-center">
+                                <p class="p-2 h-100 mb-0">
+                                    ok?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="messagebox d-flex justify-content-end mb-3">
+                            <div class="sentMessage d-flex align-items-center">
+                                <p class="p-2 h-100 mb-0">
+                                    ??
+                                </p>
+                            </div>
+                        </div>
+                        <div class="messagebox d-flex justify-content-start mb-3">
+                            <div class="receivedMessage d-flex align-items-center">
+                                <p class="p-2 h-100 mb-0">
+                                    ok
+                                </p>
+                            </div>
+                        </div>
+                       
+                        
+                        
+                    </div>
+
+                    <div class="info-account d-flex justify-content-between ps-0 pe-0 darkIconColor">
+                        <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
+                            <a href=""><i class="fa-regular fa-face-smile"></i></a>
+                        </div>
+
+                        <input type="text" class="form-control small-fs" placeholder="Scrivi un messaggio"
+                            aria-label="writingBox">
+
+                        <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
+                            <a href=""><i class="fa-solid fa-microphone"></i></a>
+                        </div>
+                    </div>
+                </main>
             </div>
         </div>
 
