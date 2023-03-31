@@ -54,7 +54,7 @@ body {
 
 /* ASIDE BAR  */
 
-.aside-bar {
+.side-bar {
     height: 90vh;
 }
 
@@ -98,7 +98,7 @@ img {
 }
 
 .chats-box {
-    padding: .3rem 1rem;
+    
     overflow-y: scroll;
     height: 68.5vh;
 }
@@ -106,6 +106,7 @@ img {
 .chat-box {
     height: 60px;
     cursor: pointer;
+    padding: .3rem 1rem;
 }
 
 .chat-box:hover {
