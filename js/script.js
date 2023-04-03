@@ -174,11 +174,20 @@ createApp({
                     ],
                 }
             ],
-            activeIndex: 0
+            activeIndex: 0,
+            newMessage: ''
         }
     },
     methods: {
-        
+        addNewMsg() {
+            const newMsg = {
+                // date: '10/01/2020 15:50:00',
+                message: this.newMessage,
+                status: 'sent'
+            }
+            this.contacts[this.activeIndex].messages.push(newMsg);
+            this.newMessage = ''
+        }
     }
 
 }).mount('#app')

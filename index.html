@@ -126,8 +126,7 @@
                             <a href=""><i class="fa-regular fa-face-smile"></i></a>
                         </div>
 
-                        <input type="text" class="form-control small-fs" placeholder="Scrivi un messaggio"
-                            aria-label="writingBox">
+                        <input type="text" class="form-control small-fs" placeholder="Scrivi un messaggio" aria-label="writingBox" v-model="newMessage" @keyup.enter="addNewMsg">
 
                         <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
                             <a href=""><i class="fa-solid fa-microphone"></i></a>
