@@ -176,13 +176,16 @@ createApp({
             ],
             activeIndex: 0,
             newMessage: '',
-            contactSearch: ''
+            contactSearch: '',
+
         }
     },
     methods: {
         addNewMsg() {
+            let hours = new Date().getHours();
+            let minutes = new Date().getMinutes();
             const newMsg = {
-                date: '04/04/2023',
+                date: hours + ':' + minutes,
                 message: this.newMessage,
                 status: 'sent'
             }
@@ -191,7 +194,7 @@ createApp({
             this.newMessage = ''
             setTimeout(() => {
                 const newMsgReceived = {
-                    date: '04/04/2023',
+                    date: hours + ':' + minutes,
                     message: 'ok!!',
                     status: 'received'
                 }
@@ -206,7 +209,8 @@ createApp({
                     contact.visible = true;
                 }
             })
-        }
+        },
+        
     }
 
 }).mount('#app')

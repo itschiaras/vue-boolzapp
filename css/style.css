@@ -33,11 +33,9 @@ body {
 
 #app {
     height: 90vh;
-    width: 80vw;
-    min-width: 800px;
+    background-color: #ffffff;    
     display: flex;
-    background-color: #f7fbfa;
-    margin: 0 auto;
+    justify-content: center;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -99,6 +97,10 @@ img {
     filter: invert(100%) sepia(5%) saturate(18%) hue-rotate(128deg) brightness(105%) contrast(105%);
 }
 
+.input-group {
+    height: 40px;
+}
+
 .input-group i {
     color: var(--iconsColor);
 }
@@ -107,7 +109,7 @@ img {
 .chats-box {
     
     overflow-y: scroll;
-    height: 68.5vh;
+    height: calc(100% - 150px);
 }
 
 .chat-box {
@@ -118,6 +120,11 @@ img {
 
 .chat-box:hover {
     background-color: var(--bgHeader) ;
+}
+
+.overflow {
+    overflow: hidden;
+    max-height: 50px;
 }
 
 /* MAIN */
@@ -156,4 +163,14 @@ main {
 
 .darkIconColor a{
     color: var(--darkIcon);
+}
+
+.time {
+    font-size: 0.6rem;
+
+}
+
+.chat-info {
+   overflow: hidden;
+   
 }
