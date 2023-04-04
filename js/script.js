@@ -175,13 +175,14 @@ createApp({
                 }
             ],
             activeIndex: 0,
-            newMessage: ''
+            newMessage: '',
+            contactSearch: ''
         }
     },
     methods: {
         addNewMsg() {
             const newMsg = {
-                // date: '10/01/2020 15:50:00',
+                date: '04/04/2023',
                 message: this.newMessage,
                 status: 'sent'
             }
@@ -190,12 +191,21 @@ createApp({
             this.newMessage = ''
             setTimeout(() => {
                 const newMsgReceived = {
-                     // date: '10/01/2020 15:50:00',
+                    date: '04/04/2023',
                     message: 'ok!!',
                     status: 'received'
                 }
                 this.contacts[this.activeIndex].messages.push(newMsgReceived);
             }, 1500)
+        },
+        filterContacts() {
+            this.contacts.forEach((contact) => {
+                if (!contact.name.toLowerCase().includes(this.contactSearch.toLowerCase())) {
+                    contact.visible = false;
+                } else {
+                    contact.visible = true;
+                }
+            })
         }
     }
 

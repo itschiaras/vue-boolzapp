@@ -60,13 +60,13 @@
                         <span class="input-group-text" id="addon-wrapping"><i
                                 class="fa-solid fa-magnifying-glass"></i></span>
                         <input type="text" class="form-control small-fs" placeholder="Cerca o inizia una nuova chat"
-                            aria-label="searchbar" aria-describedby="addon-wrapping">
+                            aria-label="searchbar" aria-describedby="addon-wrapping" v-model="contactSearch" @keyup="filterContacts">
                     </div>
 
                     <!-- CHATS BOX  -->
                     <div class="chats-box">
                         <ul class="list-unstyled">
-                            <li class="chat-box d-flex align-items-center mb-2" v-for="(contact, index) in contacts" :key="index" @click="activeIndex = index" @click="console.log(activeIndex)">
+                            <li class="chat-box d-flex align-items-center mb-2" v-for="(contact, index) in contacts" :key="index" @click="activeIndex = index" :class="!contact.visible ? 'd-none' : '' ">
                                 <img :src="contact.avatar" alt="">
                                 <div class="d-flex flex-column">
                                     <p class="m-0">{{contact.name}}</p>
@@ -126,7 +126,7 @@
                             <a href=""><i class="fa-regular fa-face-smile"></i></a>
                         </div>
 
-                        <input type="text" class="form-control small-fs" placeholder="Scrivi un messaggio" aria-label="writingBox" v-model="newMessage" @keyup.enter="addNewMsg">
+                        <input type="text" class="form-control small-fs" placeholder="Scrivi un messaggio" aria-label="writingBox" v-model.trim="newMessage" @keyup.enter="addNewMsg">
 
                         <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
                             <a href=""><i class="fa-solid fa-microphone"></i></a>
