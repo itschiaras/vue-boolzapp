@@ -177,11 +177,15 @@ createApp({
             activeIndex: 0,
             newMessage: '',
             contactSearch: '',
-            chatVisible: false
+            chatVisible: false,
+           
 
         }
     },
     methods: {
+        getRandomMsg(arr){ 
+            return arr[Math.floor(Math.random() * arr.length)];
+        },
         addNewMsg() {
             let hours = new Date().getHours();
             let minutes = new Date().getMinutes();
@@ -193,16 +197,33 @@ createApp({
             this.contacts[this.activeIndex].messages.push(newMsg);
             
             this.newMessage = ''
+
             setTimeout(() => {
+                const msgList =  [
+                    'Bond. James Bond.',
+                    'Non può piovere per sempre',
+                    'Ho visto cose che voi umani non potete neanche immaginare',
+                    'La vita è come una scatola di cioccolatini: non sai mai quel che ti capita!',
+                    'Hakuna Matata, bro',
+                    'Che la forza sia con te',
+                    'Houston, abbiamo un problema',
+                    'Mi avevi già convinta al ciao',
+                    'Elementare, Watson!',
+                    'Hasta la vista, baby!',
+                    'ADRIANAAAAAAAAA'
+    
+                ];
                 const newMsgReceived = {
                     date: hours + ':' + minutes,
-                    message: 'ok!!',
+                    message: this.getRandomMsg(msgList),
                     status: 'received'
-                }
+                };
+                console.log(this.getRandomMsg),
                 this.contacts[this.activeIndex].messages.push(newMsgReceived);
                 
 
             }, 1500);
+
             this.$nextTick(() => {
                 this.$refs.msg[this.$refs.msg.length - 1].scrollIntoView()
             });
