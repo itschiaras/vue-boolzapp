@@ -124,7 +124,7 @@ img {
 
 .overflow {
     overflow: hidden;
-    max-height: 50px;
+    max-height: 45px;
 }
 
 /* MAIN */
@@ -134,8 +134,8 @@ main {
     
 }
 
-.active {
-    display: block;
+button {
+    background-color: transparent;
 }
 
 .currentChat {

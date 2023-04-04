@@ -177,6 +177,7 @@ createApp({
             activeIndex: 0,
             newMessage: '',
             contactSearch: '',
+            chatVisible: false
 
         }
     },
@@ -210,6 +211,9 @@ createApp({
                 }
             })
         },
+        // chatsVisible() {
+        //     chatVisible = true;
+        // }
         
     }
 

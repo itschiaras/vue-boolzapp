@@ -26,7 +26,7 @@
         <div class="container m-0">
             <div class="row">
                 <!-- SIDEBAR  -->
-                <div class="col col-4 p-0 side-bar">
+                <div class="col col-12 col-md-4 p-0 side-bar d-flex flex-column d-block" :class="chatVisible ? 'd-none d-md-block' : ''" >
                     <!-- INFO ACCOUNT  -->
                     <div class="info-account d-flex justify-content-between">
                         <div class="img-container d-flex align-items-center">
@@ -68,7 +68,7 @@
                     <div class="chats-box">
                         <ul class="list-unstyled">
                             <li class="chat-box d-flex align-items-center justify-content-between  mb-2" v-for="(contact, index) in contacts"
-                                :key="index" @click="activeIndex = index" :class="!contact.visible ? 'd-none' : '' ">
+                                :key="index" @click="activeIndex = index; chatVisible = true" :class="!contact.visible ? 'd-none' : '' ">
                                 <div class="d-flex chat-info">
                                     <img :src="contact.avatar" alt="">
                                 <div class="d-flex flex-column overflow" >
@@ -91,11 +91,13 @@
                 </div>
 
                 <!-- MAIN  -->
-                <main class="col p-0">
+                <main class="col p-0 d-md-block" :class="chatVisible ? 'd-block' : 'd-none'">
 
                     <!-- INFO SELECTED ACCOUNT  -->
                     <div class="info-account d-flex justify-content-between">
+                        
                         <div class="img-container d-flex align-items-center">
+                            <button class="me-3 border-0 d-md-none" @click="chatVisible = false" v-if="chatVisible"><i class="fa-solid fa-angle-left"></i></button>
                             <img :src="contacts[activeIndex].avatar" alt="">
                             <div class="d-flex flex-column">
                                 <p class="m-0">{{contacts[activeIndex].name}}</p>
@@ -146,7 +148,7 @@
 
 
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js" integrity="sha512-DJ2+sosWB5FnZAIeCWAHu2gxQ7Gi438oOZLcBQSOrW8gD0s7LIXDv/5RW76B3FcljF40BXnfqNIo6Dhp7dFHJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/script.js"></script>
 </body>
 
