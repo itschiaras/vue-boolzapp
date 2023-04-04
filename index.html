@@ -17,138 +17,151 @@
 
 <body>
     <!-- BACKGROUND  -->
-    <div class="bg-top"></div>
-    <div class="bg-bottom"></div>
 
 
-    <div id="app" class="container p-0">
+    <div class="wrapper">
+        <div class="bg-top"></div>
+        <div class="bg-bottom"></div>
+        <div id="app" class="container p-0">
 
-        <div class="container m-0">
-            <div class="row">
-                <!-- SIDEBAR  -->
-                <div class="col col-12 col-md-4 p-0 side-bar d-flex flex-column d-block" :class="chatVisible ? 'd-none d-md-block' : ''" >
-                    <!-- INFO ACCOUNT  -->
-                    <div class="info-account d-flex justify-content-between">
-                        <div class="img-container d-flex align-items-center">
-                            <img src="./img/avatar_6.jpg" alt="">
-                            <p class="m-0">Chiaretta</p>
-                        </div>
+            <div class="container m-0">
+                <div class="row">
+                    <!-- SIDEBAR  -->
+                    <div class="col col-12 col-md-4 p-0 side-bar d-flex flex-column d-block "
+                        :class="chatVisible ? 'd-none d-md-block' : ''">
+                        <!-- INFO ACCOUNT  -->
+                        <div class="info-account d-flex justify-content-between">
+                            <div class="img-container d-flex align-items-center">
+                                <img src="./img/avatar_6.jpg" alt="">
+                                <p class="m-0">Chiaretta</p>
+                            </div>
 
-                        <div class="icon-container d-flex align-items-center gap-3">
-                            <a href=""><i class="fa-solid fa-circle-notch"></i></a>
-                            <a href=""><i class="fa-solid fa-message"></i></a>
-                            <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                        </div>
-
-                    </div>
-
-                    <!-- NOTIFICATION  -->
-                    <div class="notification d-flex justify-content-between small-fs">
-                        <div class="img-container d-flex align-items-center">
-                            <img src="./img/ban-stop-alarm-bell-ring-atm-round-512.webp" alt="">
-                            <div class="d-flex flex-column">
-                                <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
-                                <a class="m-0">Attiva notifiche desktop</a>
+                            <div class="icon-container d-flex align-items-center gap-3">
+                                <a href=""><i class="fa-solid fa-circle-notch"></i></a>
+                                <a href=""><i class="fa-solid fa-message"></i></a>
+                                <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             </div>
 
                         </div>
 
+                        <!-- NOTIFICATION  -->
+                        <div class="notification d-flex justify-content-between small-fs">
+                            <div class="img-container d-flex align-items-center">
+                                <img src="./img/ban-stop-alarm-bell-ring-atm-round-512.webp" alt="">
+                                <div class="d-flex flex-column">
+                                    <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
+                                    <a class="m-0">Attiva notifiche desktop</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- INPUT SEARCH -->
+                        <div class="input-group flex-nowrap p-1 ">
+                            <span class="input-group-text" id="addon-wrapping"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" class="form-control small-fs" placeholder="Cerca o inizia una nuova chat"
+                                aria-label="searchbar" aria-describedby="addon-wrapping" v-model="contactSearch"
+                                @keyup="filterContacts">
+                        </div>
+
+                        <!-- CHATS BOX  -->
+                        <div class="chats-box modal-fullscreen-sm-down">
+                            <ul class="list-unstyled">
+                                <li class="chat-box d-flex align-items-center justify-content-between  mb-2"
+                                    v-for="(contact, index) in contacts" :key="index"
+                                    @click="activeIndex = index; chatVisible = true"
+                                    :class="!contact.visible ? 'd-none' : '' ">
+                                    <div class="d-flex chat-info">
+                                        <img :src="contact.avatar" alt="">
+                                        <div class="d-flex flex-column overflow">
+                                            <p class="m-0">{{contact.name}}</p>
+                                            <p class="m-0 small-fs lastMessageColor">
+                                                {{contact.messages[contact.messages.length
+                                                -1].message}}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end">
+                                        <p class="time text-end">{{contact.messages[contact.messages.length
+                                            -1].date}}
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
                     </div>
 
-                    <!-- INPUT SEARCH -->
-                    <div class="input-group flex-nowrap p-1 ">
-                        <span class="input-group-text" id="addon-wrapping"><i
-                                class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control small-fs" placeholder="Cerca o inizia una nuova chat"
-                            aria-label="searchbar" aria-describedby="addon-wrapping" v-model="contactSearch"
-                            @keyup="filterContacts">
-                    </div>
+                    <!-- MAIN  -->
+                    <main class="col p-0 d-md-block" :class="chatVisible ? 'd-block' : 'd-none'">
 
-                    <!-- CHATS BOX  -->
-                    <div class="chats-box">
-                        <ul class="list-unstyled">
-                            <li class="chat-box d-flex align-items-center justify-content-between  mb-2" v-for="(contact, index) in contacts"
-                                :key="index" @click="activeIndex = index; chatVisible = true" :class="!contact.visible ? 'd-none' : '' ">
-                                <div class="d-flex chat-info">
-                                    <img :src="contact.avatar" alt="">
-                                <div class="d-flex flex-column overflow" >
-                                    <p class="m-0">{{contact.name}}</p>
-                                    <p class="m-0 small-fs lastMessageColor">{{contact.messages[contact.messages.length
-                                        -1].message}}
-                                    </p>
-                                </div>
-                                </div>
-                                
-                                <div class="d-flex justify-content-end">
-                                    <p class="time text-end">{{contact.messages[contact.messages.length
+                        <!-- INFO SELECTED ACCOUNT  -->
+                        <div class="info-account d-flex justify-content-between">
+
+                            <div class="img-container d-flex align-items-center">
+                                <button class="me-3 border-0 d-md-none" @click="chatVisible = false"
+                                    v-if="chatVisible"><i class="fa-solid fa-angle-left"></i></button>
+                                <img :src="contacts[activeIndex].avatar" alt="">
+                                <div class="d-flex flex-column">
+                                    <p class="m-0">{{contacts[activeIndex].name}}</p>
+                                    <p class="m-0 small-fs lastSentColor">Ultimo accesso:
+                                        {{contacts[activeIndex].messages[contacts[activeIndex].messages.length
                                         -1].date}}
                                     </p>
                                 </div>
-                            </li>
+                            </div>
 
-                        </ul>
-                    </div>
+                            <div class="icon-container d-flex align-items-center gap-3">
+                                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                                <a href=""><i class="fa-solid fa-paperclip"></i></a>
+                                <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- CHAT  -->
+
+                        <div class="currentChat">
+                            <div class="messagebox d-flex mb-3"
+                                v-for="(messaggio, index) in contacts[activeIndex].messages" :key="index"
+                                :class="messaggio.status === 'sent' ? 'justify-content-end' : '' ">
+                                <div class="d-flex align-items-center"
+                                    :class="messaggio.status === 'sent' ? 'sentMessage' : 'receivedMessage'">
+                                    <p class="p-2 h-100 mb-0">
+                                        {{messaggio.message}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-account d-flex justify-content-between ps-0 pe-0 darkIconColor">
+                            <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
+                                <a href=""><i class="fa-regular fa-face-smile"></i></a>
+                            </div>
+
+                            <input type="text" class="form-control small-fs" placeholder="Scrivi un messaggio"
+                                aria-label="writingBox" v-model.trim="newMessage" @keyup.enter="addNewMsg">
+
+                            <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
+                                <a href=""><i class="fa-solid fa-microphone"></i></a>
+                            </div>
+                        </div>
+                    </main>
                 </div>
-
-                <!-- MAIN  -->
-                <main class="col p-0 d-md-block" :class="chatVisible ? 'd-block' : 'd-none'">
-
-                    <!-- INFO SELECTED ACCOUNT  -->
-                    <div class="info-account d-flex justify-content-between">
-                        
-                        <div class="img-container d-flex align-items-center">
-                            <button class="me-3 border-0 d-md-none" @click="chatVisible = false" v-if="chatVisible"><i class="fa-solid fa-angle-left"></i></button>
-                            <img :src="contacts[activeIndex].avatar" alt="">
-                            <div class="d-flex flex-column">
-                                <p class="m-0">{{contacts[activeIndex].name}}</p>
-                                <p class="m-0 small-fs lastSentColor">Ultimo accesso: {{contacts[activeIndex].messages[contacts[activeIndex].messages.length -1].date}}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="icon-container d-flex align-items-center gap-3">
-                            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-                            <a href=""><i class="fa-solid fa-paperclip"></i></a>
-                            <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- CHAT  -->
-
-                    <div class="currentChat">
-                        <div class="messagebox d-flex mb-3" v-for="(messaggio, index) in contacts[activeIndex].messages"
-                            :key="index" :class="messaggio.status === 'sent' ? 'justify-content-end' : '' ">
-                            <div class="d-flex align-items-center"
-                                :class="messaggio.status === 'sent' ? 'sentMessage' : 'receivedMessage'">
-                                <p class="p-2 h-100 mb-0">
-                                    {{messaggio.message}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="info-account d-flex justify-content-between ps-0 pe-0 darkIconColor">
-                        <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
-                            <a href=""><i class="fa-regular fa-face-smile"></i></a>
-                        </div>
-
-                        <input type="text" class="form-control small-fs" placeholder="Scrivi un messaggio"
-                            aria-label="writingBox" v-model.trim="newMessage" @keyup.enter="addNewMsg">
-
-                        <div class="icon-container d-flex align-items-center p-4 pt-0 pb-0">
-                            <a href=""><i class="fa-solid fa-microphone"></i></a>
-                        </div>
-                    </div>
-                </main>
             </div>
+
+
         </div>
-
-
     </div>
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js" integrity="sha512-DJ2+sosWB5FnZAIeCWAHu2gxQ7Gi438oOZLcBQSOrW8gD0s7LIXDv/5RW76B3FcljF40BXnfqNIo6Dhp7dFHJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"
+        integrity="sha512-DJ2+sosWB5FnZAIeCWAHu2gxQ7Gi438oOZLcBQSOrW8gD0s7LIXDv/5RW76B3FcljF40BXnfqNIo6Dhp7dFHJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/script.js"></script>
 </body>
 

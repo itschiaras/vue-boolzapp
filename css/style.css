@@ -42,6 +42,11 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.wrapper {
+    height: 100vh;
+    width: 100%;
+}
+
 .small-fs {
     font-size: .8rem;
 }
@@ -174,3 +179,4 @@ button {
    overflow: hidden;
    
 }
+
