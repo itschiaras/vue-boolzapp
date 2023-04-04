@@ -17,11 +17,6 @@
 
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-}
-
 .bg-top {
     height: 120px;
     background-color: var(--topBg);
@@ -32,7 +27,7 @@ body {
 }
 
 #app {
-    height: 90vh;
+    height: 100vh;
     background-color: #ffffff;    
     display: flex;
     justify-content: center;
@@ -65,7 +60,7 @@ body {
 /* ASIDE BAR  */
 
 .side-bar {
-    height: 90vh;
+    height: 100vh;
 }
 
 .info-account {
@@ -136,7 +131,7 @@ img {
 /* MAIN */
 
 main {
-    height: 90vh;
+    height: 100vh;
     
 }
 
@@ -181,3 +176,16 @@ button {
    
 }
 
+@media screen and (min-width: 575px) {
+    #app {
+        height: 90vh;
+    }
+
+    .side-bar {
+        height: 90vh;
+    }
+
+    main {
+        height: 90vh;
+    }
+}
