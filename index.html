@@ -69,7 +69,7 @@
                         <!-- CHATS BOX  -->
                         <div class="chats-box modal-fullscreen-sm-down">
                             <ul class="list-unstyled">
-                                <li class="chat-box d-flex align-items-center justify-content-between  mb-2"
+                                <li class="chat-box d-flex align-items-center justify-content-between "
                                     v-for="(contact, index) in contacts" :key="index"
                                     @click="activeIndex = index; chatVisible = true"
                                     :class="!contact.visible ? 'd-none' : '', activeIndex === index ? 'active' : '' ">
@@ -131,6 +131,9 @@
                                     :class="messaggio.status === 'sent' ? 'sentMessage' : 'receivedMessage'">
                                     <p class="p-2 h-100 mb-0 text-break">
                                         {{messaggio.message}}
+                                    </p>
+                                    <p class="timeInMsg text-end mb-0 me-1 mt-2">
+                                        {{messaggio.date}}
                                     </p>
                                     
                                 </div>

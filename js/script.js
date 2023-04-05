@@ -220,7 +220,9 @@ createApp({
                 };
                 console.log(this.getRandomMsg),
                 this.contacts[this.activeIndex].messages.push(newMsgReceived);
-                
+                this.$nextTick(() => {
+                    this.$refs.msg[this.$refs.msg.length - 1].scrollIntoView()
+                });
 
             }, 1500);
 

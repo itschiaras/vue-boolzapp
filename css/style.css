@@ -175,6 +175,11 @@ button {
 
 }
 
+.timeInMsg {
+    font-size: 0.6rem;
+    max-width: 50px;
+}
+
 .chat-info {
    overflow: hidden;
    
