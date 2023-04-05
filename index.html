@@ -72,7 +72,7 @@
                                 <li class="chat-box d-flex align-items-center justify-content-between  mb-2"
                                     v-for="(contact, index) in contacts" :key="index"
                                     @click="activeIndex = index; chatVisible = true"
-                                    :class="!contact.visible ? 'd-none' : '' ">
+                                    :class="!contact.visible ? 'd-none' : '', activeIndex === index ? 'active' : '' ">
                                     <div class="d-flex chat-info">
                                         <img :src="contact.avatar" alt="">
                                         <div class="d-flex flex-column overflow">

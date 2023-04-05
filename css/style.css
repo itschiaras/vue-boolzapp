@@ -123,6 +123,10 @@ img {
     background-color: var(--bgHeader) ;
 }
 
+.active {
+    background-color: var(--bgHeader);
+}
+
 .overflow {
     overflow: hidden;
     max-height: 45px;
