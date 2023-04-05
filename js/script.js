@@ -220,15 +220,11 @@ createApp({
                 };
                 console.log(this.getRandomMsg),
                 this.contacts[this.activeIndex].messages.push(newMsgReceived);
-                this.$nextTick(() => {
-                    this.$refs.msg[this.$refs.msg.length - 1].scrollIntoView()
-                });
+                this.scrollToMsg();
 
             }, 1500);
 
-            this.$nextTick(() => {
-                this.$refs.msg[this.$refs.msg.length - 1].scrollIntoView()
-            });
+            this.scrollToMsg();
         },
         filterContacts() {
             this.contacts.forEach((contact) => {
@@ -239,6 +235,11 @@ createApp({
                 }
             })
         },
+        scrollToMsg() {
+            this.$nextTick(() => {
+                this.$refs.msg[this.$refs.msg.length - 1].scrollIntoView()
+            });
+        }
         
     }
 
